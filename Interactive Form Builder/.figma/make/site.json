@@ -1,0 +1,10 @@
+{
+  "description": "Create interactive forms and embed a customizable chatbot widget to collect responses, manage submissions, and enhance user engagement on websites.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
