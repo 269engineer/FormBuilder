@@ -1,5 +1,8 @@
 
-const API_URL = "/api";
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  "https://form-builder-two-lac.vercel.app/api"
+).replace(/\/$/, "");
 
 async function request<T>(
   path: string,
