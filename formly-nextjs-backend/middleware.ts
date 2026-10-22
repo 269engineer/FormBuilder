@@ -13,17 +13,11 @@ const CORS_HEADERS = {
 export function middleware(request: NextRequest) {
   const origin = request.headers.get("origin");
 
- 
-  if (origin !== ALLOWED_ORIGIN) {
-    if (request.method === "OPTIONS") {
+  if (request.method === "OPTIONS") {
+    if (origin !== ALLOWED_ORIGIN) {
       return new NextResponse(null, { status: 403 });
     }
 
-    const response = NextResponse.next();
-    return response;
-  }
-
-  if (request.method === "OPTIONS") {
     return new NextResponse(null, {
       status: 204,
       headers: CORS_HEADERS,
@@ -32,8 +26,11 @@ export function middleware(request: NextRequest) {
 
   const response = NextResponse.next();
 
-  for (const [key, value] of Object.entries(CORS_HEADERS)) {
-    response.headers.set(key, value);
+  
+  if (origin === ALLOWED_ORIGIN) {
+    for (const [key, value] of Object.entries(CORS_HEADERS)) {
+      response.headers.set(key, value);
+    }
   }
 
   return response;
@@ -42,4 +39,3 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: "/api/:path*",
 };
-
