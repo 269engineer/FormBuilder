@@ -1,5 +1,5 @@
 
-const API_URL = "/api";
+const API_URL = "https://form-builder-two-lac.vercel.app//api";
 
 async function request<T>(
   path: string,
