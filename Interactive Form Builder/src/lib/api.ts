@@ -1,5 +1,5 @@
 
-const API_URL = "/api";
+const VITE_API_URL = "/api";
 
 async function request<T>(
   path: string,
